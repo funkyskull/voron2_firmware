@@ -7,7 +7,7 @@ echo "--- Starting KlipperScreen Installation and Configuration ---"
 
 # Define the likely path to moonraker.conf
 # Adjust this path if your configuration directory is different (e.g., ~/printer_data/config)
-moonraker_conf_path="${HOME}/klipper_config/moonraker.conf"
+moonraker_conf_path="${HOME}/printer_data/config/moonraker.conf"
 
 # Check if the moonraker config file exists
 if [ ! -f "$moonraker_conf_path" ]; then
@@ -15,23 +15,6 @@ if [ ! -f "$moonraker_conf_path" ]; then
         echo "Please ensure Klipper and Moonraker are installed correctly or adjust the path in the script."
         exit 1
 fi
-
-# --- KlipperScreen Installation ---
-echo "Installing KlipperScreen..."
-cd ~
-if [ -d "KlipperScreen" ]; then
-    echo "KlipperScreen directory already exists. Skipping clone."
-else
-    git clone https://github.com/KlipperScreen/KlipperScreen.git
-fi
-# Check if install script exists before running
-if [ -f "./KlipperScreen/scripts/KlipperScreen-install.sh" ]; then
-    ./KlipperScreen/scripts/KlipperScreen-install.sh
-else
-    echo "KlipperScreen install script not found at ./KlipperScreen/scripts/KlipperScreen-install.sh"
-    echo "Attempting KlipperScreen setup via Moonraker update manager configuration (if applicable)."
-fi
-echo "KlipperScreen installation complete."
 
 # --- Add KlipperScreen to Moonraker Update Manager ---
 echo "Adding KlipperScreen to Moonraker update manager..."
@@ -97,4 +80,22 @@ else
     echo "[authorization] section with trusted_clients 127.0.0.1 added."
 fi
 echo "--- Moonraker Authorization Configuration Finished ---"
+
+# --- KlipperScreen Installation ---
+echo "Installing KlipperScreen..."
+cd ~
+if [ -d "KlipperScreen" ]; then
+    echo "KlipperScreen directory already exists. Skipping clone."
+else
+    git clone https://github.com/KlipperScreen/KlipperScreen.git
+fi
+# Check if install script exists before running
+if [ -f "./KlipperScreen/scripts/KlipperScreen-install.sh" ]; then
+    ./KlipperScreen/scripts/KlipperScreen-install.sh
+else
+    echo "KlipperScreen install script not found at ./KlipperScreen/scripts/KlipperScreen-install.sh"
+    echo "Attempting KlipperScreen setup via Moonraker update manager configuration (if applicable)."
+fi
+echo "KlipperScreen installation complete."
+
 echo "--- KlipperScreen Installation and Configuration Finished ---"

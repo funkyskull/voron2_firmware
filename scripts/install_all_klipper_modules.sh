@@ -15,9 +15,9 @@ echo "--- Starting All Klipper Module Installations ---"
 INSTALL_SCRIPTS=(
     "install_belay_klipper_module.sh"
     "install_beacon_klipper_module.sh"
-    "install_klipperscreen_klipper_module.sh"
     "install_led_effect_klipper_module.sh"
     "install_tradrack_klipper_module.sh"
+    "install_klipperscreen_klipper_module.sh"    
     # Add other install scripts here
 )
 

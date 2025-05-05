@@ -7,7 +7,7 @@ echo "--- Starting Beacon Installation and Configuration ---"
 
 # Define the likely path to moonraker.conf
 # Adjust this path if your configuration directory is different (e.g., ~/printer_data/config)
-moonraker_conf_path="${HOME}/klipper_config/moonraker.conf"
+moonraker_conf_path="${HOME}/printer_data/config/moonraker.conf"
 
 # Check if the moonraker config file exists
 if [ ! -f "$moonraker_conf_path" ]; then
